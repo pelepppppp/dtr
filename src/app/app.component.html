@@ -1,0 +1,58 @@
+
+<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<header class="main_h">
+  <div class="row">
+    <img class="logo" src="./assets/images/logo.png" alt="Logo" width="15%" height="15%">
+    <nav>
+      <ul>
+        <li><a href="#" class="nav">Home</a></li>
+        <li><a href="#" class="nav">About Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="welcome">
+    <span>Welcome!</span><br>
+    <h1>Daily Time Record</h1>
+  </div>
+  <div class="mouse">
+    <span></span>
+  </div>
+</div>
+
+<div class="container content"><br><br>
+  <div class="div-top">
+      <h2 class="title">Daily Time Record</h2>
+    <div class="display-input">
+        <input placeholder="First Name" class="form-control" [(ngModel)]="lname" style="width: 40%; display: inline-block; margin-top: -2%;">
+        <input placeholder="Last Name" class="form-control" [(ngModel)]="fname" style="width: 40%; display: inline-block; margin-left: 1%; margin-top: -2%;">
+        <input class="btn btn-info button reg" type="button" (click)="timeIn(lname,fname)" value="Time In" style="margin-top: -1.5%;">
+    </div>
+    <br><br>
+    <table class="table table-bordered table-lg">
+      <thead class="thead-light">
+        <th class="number">Entry No</th>
+        <th class="name">Name</th>
+        <th class="date">Date</th>
+        <th class="in">Time In</th>
+        <th class="out">Time Out</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people; let i = index">
+          <td class="center">{{i+1}}</td>
+          <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{person.name}}</td>
+          <td class="center">{{person.date}}</td>
+          <td class="center">{{person.timein}}</td>
+          <td *ngIf="person.timeout == '0:00'" class="btn-for-table center">
+            <input type="button" class="btn btn-sm btn-info" (click)="timeOut(i)" value="Time Out">
+          </td>
+          <td class="center" *ngIf="person.timeout != '0:00'">
+            {{person.timeout}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <router-outlet></router-outlet>
