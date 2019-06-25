@@ -25,11 +25,11 @@
 <div class="container content"><br><br>
   <div class="div-top">
       <h2 class="title">Daily Time Record</h2>
-    <div class="display-input">
-        <input placeholder="First Name" class="form-control" [(ngModel)]="lname" style="width: 40%; display: inline-block; margin-top: -2%;">
-        <input placeholder="Last Name" class="form-control" [(ngModel)]="fname" style="width: 40%; display: inline-block; margin-left: 1%; margin-top: -2%;">
-        <input class="btn btn-info button reg" type="button" (click)="timeIn(lname,fname)" value="Time In" style="margin-top: -1.5%;">
-    </div>
+    <form #fullName="ngForm" (ngSubmit)="timeIn(fullName.value)" class="display-input">
+        <input placeholder="First Name" class="form-control" ngModel name="lname" style="width: 40%; display: inline-block; margin-top: -2%;">
+        <input placeholder="Last Name" class="form-control" ngModel name="fname" style="width: 40%; display: inline-block; margin-left: 1%; margin-top: -2%;">
+        <input class="btn btn-info button reg" type="submit" value="Time In" style="margin-top: -1.5%;">
+    </form>
     <br><br>
     <table class="table table-bordered table-lg">
       <thead class="thead-light">

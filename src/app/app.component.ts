@@ -8,15 +8,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   people = []
 
-  timeIn(fname, lname) {
+  timeIn(value: any) {
     const date = new Date();
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = date.getFullYear();
     const today = mm + '/' + dd + '/' + yyyy;
-    if (!fname || !lname) {
+    if (!value.fname || !value.lname) {
     } else {
-      const person = { name: lname + ", " + fname, date: today, timein: this.myDate(), timeout: "0:00" };
+      const person = { name: value.lname + ", " + value.fname, date: today, timein: this.myDate(), timeout: "0:00" };
       this.people.push(person);
     }
   }
